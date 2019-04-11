@@ -1,0 +1,51 @@
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.search {
+    width: 600px;
+    float: left;
+    margin-top: -14px;
+}
+
+.back_to_shop {
+    float: left;
+    margin-top: -10px;
+    text-align: right;
+    padding-right: 0px;
+}
+
+.My_cart {
+    font-size: 25px;
+    font-weight: 600px;
+    color: white;
+    float: left;
+    margin-top: -10px
+}
+
+.search_width {
+    width: 350px;
+}
+
+.recipt_list {
+    background-color: rgb(245, 245, 245);
+    padding-top: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 760px;
+}
+
+tr {
+    background-color: white;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.image {
+    width: 200px;
+}
+
+.upload_button {
+    width: 200px;
+}

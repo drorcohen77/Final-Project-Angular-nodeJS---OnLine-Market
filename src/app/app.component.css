@@ -1,0 +1,153 @@
+ .main {
+     /* padding: 50px; */
+     /* height: 200%; */
+ }
+ 
+ .upper_fotter {
+     width: 100%;
+     height: 80px;
+     position: relative;
+ }
+ 
+ .down_fotter {
+     /* position: fixed; */
+     height: 50px;
+     /* margin-bottom: 0px !important; */
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     /* background-image: linear-gradient(to right, brown, rgb(219, 157, 157)); */
+     background-color: rgb(243, 242, 242);
+     color: white;
+     text-align: center;
+ }
+ 
+ .logo {
+     position: absolute;
+     left: 40px;
+     top: 15px;
+     color: brown;
+     font-size: 30px;
+     font-weight: 500;
+ }
+ 
+ .customer_name {
+     position: absolute;
+     right: 250px;
+     top: 25px;
+     color: brown;
+     font-size: 17px;
+     font-weight: 500;
+ }
+ 
+ .logOut {
+     position: absolute;
+     right: 50px;
+     top: 20px;
+ }
+ 
+ .bg-light {
+     background-image: linear-gradient(to right, brown, rgb(219, 157, 157));
+ }
+ 
+ .card-body {
+     position: relative;
+     margin-bottom: 5px;
+     height: 50px;
+ }
+ 
+ .Administrator {
+     position: absolute;
+     bottom: 8px;
+     font-weight: 500;
+     left: 70px;
+     font-size: 17px;
+     color: white;
+ }
+ 
+ .Go_To_Shop {
+     position: absolute;
+     bottom: 8px;
+     font-weight: 500;
+     left: 250px;
+     font-size: 17px;
+     color: white;
+ }
+ 
+ .search {
+     position: absolute;
+     /* right: 150px; */
+     top: 23px;
+     border-radius: 12px;
+     width: 450px;
+ }
+ 
+ #custom-search-input {
+     margin: 0;
+     padding: 0;
+ }
+ 
+ #custom-search-input .search-query {
+     padding-right: 5px;
+     padding-right: 9px \9;
+     padding-left: 20px;
+     padding-left: 20px \9;
+     margin-bottom: 0;
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 25px 0px 0px 25px;
+     border-right: 0px;
+ }
+ 
+ #custom-search-input[_ngcontent-c0] button[_ngcontent-c0] {
+     border: 1px solid #ced4da;
+     background: none;
+     margin-top: px;
+     padding-top: 7px;
+     position: relative;
+     margin-bottom: 0;
+     color: #D9230F;
+     border-left: 0;
+     border-radius: 0px 20px 20px 0px;
+ }
+ 
+ .search-query:focus+button {
+     z-index: 3;
+ }
+ 
+ .cart_q {
+     position: absolute;
+     /* right: 430px; */
+     top: 25px;
+ }
+ 
+ .p3 {
+     font-size: 25px;
+ }
+ 
+ .cart_quantity {
+     position: absolute;
+     color: white;
+     background: #0062cc;
+     border-radius: 50%;
+     width: 38px;
+     left: 22px;
+     top: -12px;
+     text-align: center;
+     font-weight: 400;
+ }
+ /* #ex4 .p1[data-count]:after {
+     position: absolute;
+     right: 10%;
+     top: 8%;
+     content: attr(data-count);
+     font-size: 50%;
+     padding: .2em;
+     border-radius: 50%;
+     line-height: 1em;
+     color: white;
+     background: rgba(255, 0, 0, .85);
+     text-align: center;
+     min-width: 1em;
+     font-weight: bold;
+ } */

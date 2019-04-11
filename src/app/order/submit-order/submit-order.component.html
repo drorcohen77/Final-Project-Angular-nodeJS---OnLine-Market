@@ -1,0 +1,94 @@
+<div class=" frame right_box">
+    <div class="card-body bg-light stripe upper_foter">
+        <h3 class="order">Order</h3>
+    </div>
+
+    <div class="container scroll prod">
+        <div class="shiping">
+            <h4>Shiping Details:</h4>
+        </div>
+        <form class="submit_order">
+            <div class="form-inline">
+                <label for="City" class="mr-sm-6">City:</label>
+                <input required #city="ngModel" class="form-control" id="City" name="City" [(ngModel)]="Order.city" (dblclick)="GetCity()" placeholder="Double Click Or Enter City">
+            </div>
+
+            <div [hidden]="emptyInput==0 || city.valid" class="alert alert-danger">
+                <strong>Please choose city </strong>
+            </div>
+
+            <div class="form-inline">
+                <label for="Street" class="mr-sm-5">Street:</label>
+                <input type="Street " required #Street="ngModel" name="Street" class="form-control " id="Street " [(ngModel)]="Order.street" (dblclick)="GetStreet()" placeholder="Double Click Or Enter Street">
+            </div>
+
+            <div [hidden]="emptyInput==0 || Street.valid" class="alert alert-danger">
+                <strong>Street is required</strong>
+            </div>
+
+            <div class="form-inline">
+                <label for="ShippingDate" class="mr-sm-5">Shipping Date:</label>
+                <input type="date" required #ShippingDate="ngModel" name="ShippingDate " class="form-control " id="ShippingDate" [min]="today" [(ngModel)]="Order.shipping_date">
+            </div>
+
+            <div [hidden]="emptyInput==0 || ShippingDate.valid" class="alert alert-danger">
+                <strong>Shipping Date is required</strong>
+            </div>
+            <div [hidden]="this.CountOrders<3" class="alert alert-danger">
+                <strong>To Many Orders On That Date. Please Choose Another Shipping Date.</strong>
+            </div>
+            <!-- <div [hidden]="emptyInput==0" class="alert alert-danger">
+                <strong>Please Choose Futured Shipping Date.</strong>
+            </div> -->
+
+            <div class="">
+                <h4 class="payments">Payments:</h4>
+            </div>
+            <div class="">
+                <div class="form-inline">
+                    <label for="CreditCard" class="mr-sm-3">Credit Card:</label>
+                    <input type="CreditCard" required #CreditCard="ngModel" name="CreditCard " class="form-control credit" id="CreditCard " [(ngModel)]="Order.credit" placeholder="Enter Credit Card">
+                </div>
+
+                <div [hidden]="this.CreditFormat==0" class="alert alert-danger">
+                    <strong>Not a valid Credit Card! Please Check Carfully</strong>
+                </div>
+                <div class="col-lg-12 to_order">
+                    <a data-toggle="modal" data-target="#myModal">
+                        <button type="submit " class="btn btn-success order_btn" (click)="SubmitOrder()">Submit Order</button>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div *ngIf="this.emptyInput==0 && this.CreditFormat==0 && this.CountOrders < 3" class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div *ngIf="this.orders_service.OrderSubmited==true" class="modal-body modal_body">
+                <h4 class="card-title card_title">Your Purchase Was Successfuly Submited!</h4>
+                <h5>To download recipt please press
+                    <a><span (click)="DownloadRecipt(this.shopping_service.Product_in_Cart[0]['cart_id'])"><b class="Recipt">Recipt</b><i class="fas fa-file-download"></i></span></a>
+                </h5>
+            </div>
+
+            <div *ngIf="this.orders_service.OrderSubmited==false" class="modal-body modal_body">
+                <h5 class="card-title">There has been an error accured!</h5>
+                <h5 class="card-title">Your purchase wasn't submited.</h5>
+                <h5 class="card-title">Please try again.</h5>
+            </div>
+
+            <!-- Modal footer -->
+            <div *ngIf="this.orders_service.OrderSubmited==true" class="modal-footer modal_footer">
+                <button type="button" class="btn btn-primary" (click)="Confirm()" data-dismiss="modal">Confirm</button>
+            </div>
+            <div *ngIf="this.orders_service.OrderSubmited==false" class="modal-footer modal_footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Back To Order</button>
+            </div>
+
+        </div>
+    </div>
+</div>

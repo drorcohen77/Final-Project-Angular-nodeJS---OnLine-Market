@@ -1,0 +1,10 @@
+<div class="comp">
+    <div class="row main_block">
+        <div *ngIf="shopping_service.ShowSideBar ==true" class="col-lg-4">
+            <app-shoppig-sidebar></app-shoppig-sidebar>
+        </div>
+        <div [ngClass]="{'col-lg-8':shopping_service.ShowSideBar == true, 'col-lg-12':shopping_service.ShowSideBar == false}">
+            <app-shopping-products></app-shopping-products>
+        </div>
+    </div>
+</div>

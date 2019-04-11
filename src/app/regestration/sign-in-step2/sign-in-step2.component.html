@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+
+    <div class="col-lg-6 main_Block">
+        <div class="container">
+            <div class="row title">
+                <div class="col-lg-4">
+                    <h3 class="Sign-In">Sign-In User</h3>
+                </div>
+                <div class="col-lg-4">
+                    <span class="step"> Step 2</span>
+                </div>
+                <div class="col-lg-4">
+                    <div class="back">
+                        <button type="submit" class="btn btn-md btn-outline-primary" (click)="back()">Back To Step 1</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div>
+                <form>
+                    <div class="form-group">
+                        <label for="City">City:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-city"></i></span>
+                            </div>
+                            <select required #city="ngModel" class="form-control" id="City" name="City" [(ngModel)]="step2.city">
+                            <option value=''>Select City</option>
+                            <option *ngFor="let city of citys; let i=index" [ngValue]=citys[i]>{{citys[i]}}</option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div [hidden]="emptyInput==0 || city.valid" class="alert alert-danger">
+                        <strong>Please choose city </strong>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Street">Street:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-home"></i></span>
+                            </div>
+                            <input type="Street " required #name="ngModel" name="Street" class="form-control " id="Street " [(ngModel)]="step2.street " placeholder="Enter Street ">
+                        </div>
+                    </div>
+
+                    <div [hidden]="emptyInput==0 || name.valid" class="alert alert-danger">
+                        <strong>Street is required</strong>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="FirstName">First Name:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="FirstName" required #firstName="ngModel" name="FirstName " class="form-control " id="FirstName " [(ngModel)]="step2.firstName " placeholder="Enter First Name ">
+                        </div>
+                    </div>
+
+                    <div [hidden]="emptyInput==0 || firstName.valid" class="alert alert-danger">
+                        <strong>First Name is required</strong>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LastName">Last Name:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="LastName" required #lastName="ngModel" name="LastName " class="form-control " id="LastName " [(ngModel)]="step2.lastName " placeholder="Enter Last Name ">
+                        </div>
+                    </div>
+
+                    <div [hidden]="emptyInput==0 || lastName.valid" class="alert alert-danger">
+                        <strong>Last Name is required</strong>
+                    </div>
+                    <br>
+
+                    <div class="submit">
+                        <button type="submit " class="btn btn-success" (click)="submit()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3">
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.card {
+    box-shadow: 0px 0px 30px 0px #bebebe;
+    border: 0px;
+    height: 835px;
+}
+
+.info_image {
+    padding: 0px;
+    height: 300px;
+}

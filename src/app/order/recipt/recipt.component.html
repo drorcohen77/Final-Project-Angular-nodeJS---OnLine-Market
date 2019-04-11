@@ -1,0 +1,54 @@
+<div class=" frame left_box">
+    <div class="row">
+        <div class="card-body bg-light stripe upper_foter">
+            <div class="col-lg-3 My_cart">
+                <div class="">
+                    <h4 class="">My Cart</h4>
+                </div>
+            </div>
+            <div class="col-lg-6 search">
+                <div class="">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group search_width">
+                            <input type="text" class="form-control mr-sm-2" placeholder="Search for product" name="Search" [(ngModel)]="item">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 back_to_shop">
+                <div class="">
+                    <div class="input-group-btn">
+                        <button class="btn btn-sm btn-primary" type="submit" [routerLink]="['/shopping']">Back To Shop</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container scroll recipt_list">
+        <table class="table table-hover">
+
+            <tbody *ngFor="let SearchResult of shopping_service.Product_in_Cart | search:item">
+                <tr *ngIf="!item">
+                    <td class="image"><img src="../../../assets/pictures/{{SearchResult['image']}}" style="width: 100px; height: 100px;"></td>
+                    <td>{{SearchResult['product_name']}}</td>
+                    <td>{{SearchResult['quantity']}}</td>
+                    <td>{{SearchResult['total_price'] | currency:'₪'}}</td>
+                </tr>
+
+                <tr *ngIf="item">
+                    <td><img src="../../../assets/pictures/{{SearchResult['image']}}" style="width: 100px; height: 100px;"></td>
+                    <td><mark>{{SearchResult['product_name']}}</mark></td>
+                    <td><mark>{{SearchResult['quantity']}}</mark></td>
+                    <td><mark>{{SearchResult['total_price'] | currency:'₪'}}</mark></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-footer">
+            <div class="total">CART TOTAL PRICE: {{shopping_service.Total_Cart_Price | currency:'₪'}}</div>
+        </div>
+    </div>
+
+</div>

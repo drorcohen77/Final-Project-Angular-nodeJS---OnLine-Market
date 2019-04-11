@@ -1,0 +1,41 @@
+<div class="frame right_box">
+    <div class="card-body bg-light stripe">
+        <ul class="nav justify-content-start" *ngIf="shopping_service.ShowCatNav==0">
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/administrator']" (click)="All_Products()">All Products</a>
+            </li>
+            <div *ngFor="let category of this.shopping_service.AllCategorys; let i=index">
+
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/administrator']" (click)="GetCategoryProds(category['category_id'])">{{category['category_name']}}</a>
+                </li>
+            </div>
+        </ul>
+
+        <div *ngIf="shopping_service.ShowCatNav==1">
+            <button type="button" class="btn btn-link filter" [routerLink]="['/administrator']" (click)="All_Products()">Clear <i class="fas fa-filter"></i></button>
+        </div>
+    </div>
+
+    <div class="scroll prod">
+        <div *ngFor="let product of shopping_service.products">
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="../../../assets/pictures/{{product['image']}}" alt="Card image cap" style="width: 100%; height: 110px;">
+                    <div class="card-block">
+                        <h4 class="card-title product_name">{{product['product_name']}}</h4>
+                        <span>{{product['price'] | currency:'NIS'}}</span>
+                    </div>
+                    <div class="card-footer">
+                        <a data-toggle="modal" data-target="#myModal">
+                            <button type="button" class="btn btn-md btn-success" (click)="EditProduct(product['product_id'],product['product_name'],product['price'],product['image'],product['category_id'],product['category_name'])">
+                                Edit Product
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

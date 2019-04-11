@@ -1,0 +1,28 @@
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+}
+
+.submit {
+    text-align: center;
+}
+
+.container {
+    box-shadow: 0px 0px 50px 0px #bebebe;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.btn-success {
+    width: 200px;
+}
+
+.main_Block {
+    height: 850px;
+}

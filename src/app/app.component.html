@@ -1,20 +1,65 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="main">
+    <div class="row upper_fotter">
+        <div class="col-lg-4">
+            <p class="logo"><i class="fas fa-apple-alt"></i> OnLine Market</p>
+        </div>
 
+        <div class="col-lg-4">
+            <div *ngIf="this.service.ShoppingMain==1" class="search">
+                <div id="custom-search-input">
+                    <div class="input-group col-lg-12">
+                        <input type="text" class="  search-query form-control" placeholder="Search for product" name="Search" [(ngModel)]="item" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="submit" (click)="SearchProduct()">
+                                <span><i class="fas fa-search"></i></span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="cart_q" *ngIf="service.LoginObj.length>0 || reg_service.newCustomer.length>0">
+                <span class="p1" data-count="">
+                      <!--     <i class="p2 fa fa-circle fa-stack-2x"></i> -->
+                          <i class="p3 fa fa-shopping-cart" data-count=""></i>
+                          <i class="cart_quantity">{{this.ShoppingService.Total_Products_Quantity}}</i>
+                        </span>
+
+            </div>
+            <div class="customer_name" *ngIf="service.LoginObj.length>0">
+                <span> Welcome  {{this.service.LoginObj[0]['first_name']}} {{this.service.LoginObj[0]['last_name']}} </span>
+            </div>
+
+            <div class="customer_name" *ngIf="reg_service.submit==true">
+                <span> Welcome  {{this.reg_service.newUser['firstName']}} {{this.reg_service.newUser['lastName']}} </span>
+            </div>
+
+            <div class="customer_name" *ngIf="service.LoginObj==false && service.submit==false">
+                <span> Welcome Guest </span>
+            </div>
+
+            <div class="logOut" *ngIf="service.LoginObj.length>0 || reg_service.submit==true">
+                <button class="btn btn-link" (click)="LogOut()"><i class="fas fa-sign-out-alt"> Log Out</i></button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card-body bg-light middle_fotter">
+        <div *ngIf="service.LoginObj.length>0">
+            <button *ngIf="this.service.LoginObj[0]['role']==1" (click)="GoToAdmin()" class="btn btn-link nav_buttons Administrator">Administrator</button>
+            <button *ngIf="this.service.BackToShopping==1" (click)="GoToShopping()" class="btn btn-link nav_buttons Go_To_Shop">Go To Shop</button>
+        </div>
+    </div>
+
+
+    <router-outlet></router-outlet>
+
+
+    <div class="down_fotter">
+
+    </div>
+</div>

@@ -1,0 +1,45 @@
+.card-body {
+    height: 48px;
+}
+
+.update {
+    margin-top: 2px;
+}
+
+.no_products {
+    color: brown;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.Quantity_input {
+    text-align: center;
+    width: 55px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: rgb(245, 245, 245);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.step_buttons {
+    border-radius: 20px;
+    background-color: brown;
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+    width: 30px;
+    height: 30px;
+}
+
+.bottom_footer {
+    height: 112px;
+    background-color: rgb(240, 240, 240);
+}
+
+.total_footer {
+    padding-top: 16px;
+    margin-bottom: 16px;
+}

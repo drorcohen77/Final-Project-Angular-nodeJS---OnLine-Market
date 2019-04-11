@@ -1,0 +1,87 @@
+<div class="frame right_box">
+    <div class="card-body bg-light stripe">
+        <ul class="nav justify-content-start" *ngIf="shopping_service.ShowCatNav==0">
+            <div *ngIf="shopping_service.ShowSideBar==false">
+                <button type="button" class="btn btn-link eye" (click)="Show_SideBar()"><i class="far fa-eye"></i></button>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/shopping']" (click)="All_Products()">All Products</a>
+            </li>
+            <div *ngFor="let category of categorys; let i=index">
+
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/shopping']" (click)="GetCategoryProds(category['category_id'])">{{category['category_name']}}</a>
+                </li>
+            </div>
+        </ul>
+
+        <div *ngIf="shopping_service.ShowCatNav==1">
+            <button type="button" class="btn btn-link filter" [routerLink]="['/shopping']" (click)="All_Products()">Clear <i class="fas fa-filter"></i></button>
+        </div>
+    </div>
+
+
+    <div class="scroll prod">
+        <div *ngFor="let product of shopping_service.products">
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="../../../assets/pictures/{{product['image']}}" alt="Card image cap" style="width: 100%; height: 110px;">
+                    <div class="card-block">
+                        <p class="card-title product_name">{{product['product_name']}}</p>
+                        <span>{{product['price'] | currency:'₪'}}</span>
+                    </div>
+                    <div class="card-footer">
+                        <a data-toggle="modal" data-target="#myModal">
+                            <button type="button" class="btn btn-md btn-success add" (click)="AddProduct(product['product_id'],product['product_name'],product['price'],product['image'])">
+                        Add  <i class="fas fa-cart-plus"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content add_modal">
+
+                <!-- Modal Header -->
+                <div class="modal-header add_header">Add Product Quantity
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <img class="card-img-top" src="../../../assets/pictures/{{Choosen_P['p_image']}}" alt="Card image" style="width: 100px; height: 100px;">
+                    <h4 class="card-title product_name">{{Choosen_P['p_name']}}</h4>
+                    <span>{{Choosen_P['p_price'] | currency:'₪'}}</span>
+                </div>
+                <form>
+                    <!-- <input type="number" class="Quantity" name="points" step="1" min='1' max='10' [(ngModel)]="Quantity"> -->
+                    <div class="Quantity">
+                        <table>
+                            <tr>
+                                <td>
+                                    <button class="step_buttons" type="button" mat-raised-button (click)="counter('decrement')" [disabled]="count < 2">-</button>
+                                </td>
+                                <td class="center-input">
+                                    <input matInput name="counter" class="Quantity_input" type="number" size="2" step="1" min='1' max='20' [(ngModel)]="Quantity" readonly required>
+                                </td>
+                                <td class="step_buttons">
+                                    <button class="step_buttons" type="button" mat-raised-button (click)="counter('increment')" [disabled]="count >19">+</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-block" (click)="AddQuantity(Choosen_P['p_id'],Choosen_P['p_price'])" data-dismiss="modal">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

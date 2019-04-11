@@ -1,0 +1,34 @@
+<div class="container">
+    <div>
+        <h4>Available Products in Our Store:</h4>
+        <p class="counter-count"> {{this.products.length}}</p>
+    </div>
+    <div>
+        <h4>Submited Orders in Our Store:</h4>
+        <p class="counter-count"> {{this.orders.length}}</p>
+    </div>
+
+    <div class="intro_massage" *ngIf="this.service.LoginObj.length>0">
+        <div *ngIf="this.service.CartExist==1">
+            <p>
+                You Have Open Cart From {{this.service.Cart[0]['cart_date'] | date:'dd-MM-yyyy'}}
+                <br>
+                <span *ngIf="this.shopping_service.Total_Cart_Price==0">With No Products.</span>
+                <span *ngIf="this.shopping_service.Total_Cart_Price>0">With Total Price Of  {{this.shopping_service.Total_Cart_Price | currency:'₪'}}.</span>
+            </p>
+        </div>
+        <div *ngIf="this.service.CartExist==0">
+            <span>Your Last Purchase Was On {{this.service.Cart[0]['order_date'] | date:'dd-MM-yyyy'}} </span><br>
+            <span> With Total Price Of  {{this.service.Cart[0]['total'] | currency:'₪'}}.</span>
+        </div>
+    </div>
+    <div class="intro_massage" *ngIf="this.service.FirstPurchase==true">
+        <span>Welcome To Your First Purchase in Our Store.</span>
+    </div>
+
+    <div class="intro_massage" *ngIf="this.service.submit==true">
+        <p>
+            Welcome {{this.service.newUser['firstName']}} {{this.service.newUser['lastName']}} To Your First Purchase in Our Store.
+        </p>
+    </div>
+</div>

@@ -1,0 +1,146 @@
+<div class="frame left_box">
+
+    <div class="card-body bg-light stripe upper_foter">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 *ngIf="this.admin_service.Action!='edit'" class="my_cart">Add Product:</h3>
+                <h3 *ngIf="this.admin_service.Action=='edit'" class="my_cart">Edit Product:</h3>
+            </div>
+            <div class="col-lg-6">
+                <span class="add_product" *ngIf="this.admin_service.Action=='edit'">
+                    <button type="submit" class="btn btn-sm btn-primary " (click)="Add_Product()">Add Product</button>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div class="container scroll prod"> -->
+    <div class="container">
+        <div *ngIf="this.admin_service.Action!='edit'">
+            <form #AddForm="ngForm">
+                <div class="form-group">
+                    <label for="Product_Name">Product Name:</label>
+                    <input type="Product_Name" required #Product_Name='ngModel' name="Product_Name" class="form-control" id="Product_Name" [(ngModel)]="Product.product_name" placeholder="Enter Product Name">
+                </div>
+
+                <div [hidden]="emptyInput==0 || Product_Name.valid" class="alert alert-danger">
+                    <strong>Product Name is required</strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="Product_Price">Product Price:</label>
+                    <input type="Product_Price" required #Product_Price='ngModel' name="Product_Price" class="form-control" id="Product_Price" [(ngModel)]="Product.price" placeholder="Enter Product Price">
+                </div>
+
+                <div [hidden]="emptyInput==0 || Product_Price.valid" class="alert alert-danger">
+                    <strong>Product Price is required</strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="Category">Category:</label>
+                    <select class="form-control" required #Category='ngModel' id="Category" name="Category" [(ngModel)]="Product.category_id">
+                            <option value=''>Select Category</option>
+                            <option *ngFor="let category of categories; let i=index" [ngValue]="category.category_id">{{category.category_name}}</option>
+                        </select>
+                </div>
+
+                <div [hidden]="emptyInput==0 || Category.valid" class="alert alert-danger">
+                    <strong>Category is required</strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="Picture">Picture:</label>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img [src]="this.admin_service.imgeUrl" style="width: 120px; height: 120px;">
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- <input id="cin" name="cin" type="file" #image accept="image*/" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/> -->
+                            <button type="button" class="btn btn-sm btn-primary upload_button" (click)="fileInput.click()">
+                                <span>Upload image</span>
+                                <input #fileInput type="file" #image (change)="fileChangeEvent($event)" style="display:none;" />
+                            </button>
+                        </div>
+                    </div>
+                    <div [hidden]="imageInput==0 || image.valid" class="alert alert-danger">
+                        <strong>Image is required</strong>
+                    </div>
+                </div>
+                <br>
+                <div class="col-lg-12 to_order">
+                    <button type="submit" class="btn btn-md btn-success order_btn" (click)="Add()">Save Product</button>
+                </div>
+
+            </form>
+        </div>
+
+        <div *ngIf="this.admin_service.Action=='edit'">
+            <form #AddForm="ngForm">
+                <div class="form-group">
+                    <label for="Product_Name">Product Name:</label>
+                    <input type="Product_Name" required #Product_Name='ngModel' name="Product_Name" class="form-control" id="Product_Name" [(ngModel)]="prod.product_name">
+                </div>
+
+                <div [hidden]="emptyInput==0 || Product_Name.valid" class="alert alert-danger">
+                    <strong>Product Name is required</strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="Product_ID">Product ID:</label>
+                    <input type="Product_ID" required #Product_ID='ngModel' disabled name="Product_ID" class="form-control" id="Product_ID" [(ngModel)]="prod.product_id">
+                </div>
+
+                <div class="form-group">
+                    <label for="Product_Price">Product Price:</label>
+                    <input type="Product_Price" required #Product_Price='ngModel' name="Product_Price" class="form-control" id="Product_Price" [(ngModel)]="prod.product_price">
+                </div>
+
+                <div [hidden]="emptyInput==0 || Product_Price.valid" class="alert alert-danger">
+                    <strong>Product Price is required</strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="Category">Category:</label>
+                    <select class="form-control" required #Category='ngModel' id="Category" name="Category" [(ngModel)]="prod.category_id">
+                                <option *ngFor="let category of categories; let i=index" [ngValue]="category.category_id">{{category.category_name}}</option>
+                            </select>
+                </div>
+
+                <div [hidden]="emptyInput==0 || Category.valid" class="alert alert-danger">
+                    <strong>Category is required</strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="Picture">Picture:</label>
+                    <input type="Picture" required #Picture='ngModel' name="Picture" class="form-control" id="Picture" [(ngModel)]="prod.product_image" placeholder="Enter Picture">
+                </div>
+
+                <div class="form-group">
+                    <label for="Picture">Picture:</label>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img [src]="this.admin_service.imgeUrl" style="width: 120px; height: 120px;">
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- <input id="cin" name="cin" type="file" #image accept="image*/" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/> -->
+                            <button type="button" class="btn btn-sm btn-primary upload_button" (click)="fileInput.click()">
+                                <span>Upload image</span>
+                                <input #fileInput type="file" #image (change)="fileChangeEvent($event)" style="display:none;" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div [hidden]="imageInput==0 || image.valid" class="alert alert-danger">
+                    <strong>Uploading Image is required</strong>
+                </div>
+                <br>
+                <div class="col-lg-12 to_order">
+                    <button type="submit" class="btn btn-md btn-success order_btn" (click)="Edit()">Edit Product</button>
+                </div>
+            </form>
+        </div>
+    </div>

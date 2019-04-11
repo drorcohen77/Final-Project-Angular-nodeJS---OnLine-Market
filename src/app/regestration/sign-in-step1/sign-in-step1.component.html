@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row title">
+        <div class="col-lg-4">
+            <h3 class="Sign-In">Sign-In</h3>
+        </div>
+        <div class="col-lg-4">
+            <span class="step"> Step 1</span>
+        </div>
+        <div class="col-lg-4">
+            <div class="back">
+                <button type="submit" class="btn btn-md btn-outline-primary" (click)="back()">Back To LogIn</button>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div>
+        <form #Reg1Form="ngForm">
+            <div class="form-group">
+                <label for="ID">ID:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                    </div>
+                    <input type="userID" required #name='ngModel' name="userID" type="userID" name="userID" class="form-control" id="userID" [(ngModel)]="step1.id" placeholder="Enter ID">
+                </div>
+            </div>
+
+            <div [hidden]="emptyInput==0 || name.valid" class="alert alert-danger">
+                <strong>ID is required</strong>
+            </div>
+
+            <div [hidden]="errorID==0" class="alert alert-danger">
+                <strong>ID is already exists!</strong>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-at"></i></span>
+                    </div>
+                    <input type="email" required #email='ngModel' name="email" class="form-control" id="email" [(ngModel)]="step1.email" placeholder="Enter Email">
+                </div>
+            </div>
+
+            <div [hidden]="errorEmail==0" class="alert alert-danger">
+                <strong>Incorect Email Format</strong>
+            </div>
+
+            <div class="form-group">
+                <label for="pass">Password:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+                    </div>
+                    <input type="pass" required #pass='ngModel' name="pass" class="form-control" id="pass" [(ngModel)]="step1.password" placeholder="Enter Password">
+                </div>
+            </div>
+
+            <div [hidden]="emptyInput==0 || pass.valid" class="alert alert-danger">
+                <strong>Password is required</strong>
+            </div>
+
+            <div [hidden]="Passexists==0" class="alert alert-danger">
+                <strong>Password is already exists</strong>
+            </div>
+
+            <div class="form-group">
+                <label for="ConfirmPass">Confirm Password:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-clipboard-check"></i></span>
+                    </div>
+                    <input type="ConfirmPass" required #confirmPass='ngModel' name="ConfirmPass" class="form-control" id="ConfirmPass" [(ngModel)]="ConfirmPass" placeholder="Confirm Password">
+                </div>
+            </div>
+
+            <div [hidden]="errorPass==0 || confirmPass.valid" class="alert alert-danger">
+                <strong>Password Not Mach</strong>
+            </div>
+            <br>
+            <div class="next">
+                <button type="submit" class="btn btn-primary" (click)="next()">Next</button>
+            </div>
+        </form>
+    </div>
+</div>

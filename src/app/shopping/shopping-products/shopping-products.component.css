@@ -1,0 +1,53 @@
+.card-body {
+    padding: 0.2rem;
+}
+
+.modal-content {
+    text-align: center;
+}
+
+.fa,
+.fas {
+    font-size: 20px;
+}
+
+.add_modal {
+    width: 300px;
+}
+
+.add_header {
+    background-color: brown;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.Quantity {
+    margin-bottom: 10px;
+    text-align: center;
+    padding-left: 55px;
+}
+
+.Quantity_input {
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(245, 245, 245);
+    font-weight: 600;
+    /* font-size: 18px; */
+}
+
+.step_buttons {
+    border-radius: 20px;
+    background-color: brown;
+    color: white;
+    font-weight: 800;
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+}
+
+.modal.show .modal-dialog {
+    padding-left: 150px;
+}

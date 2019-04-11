@@ -1,0 +1,10 @@
+<div class="comp">
+    <div class="row main_block">
+        <div class="col-lg-4">
+            <app-add-edit-products [prod]="ID"></app-add-edit-products>
+        </div>
+        <div class="col-lg-8">
+            <app-admin-products (product)="ID=$event"></app-admin-products>
+        </div>
+    </div>
+</div>

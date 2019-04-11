@@ -1,0 +1,99 @@
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 5px solid #42A948;
+    /* green */
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+    /* red */
+}
+
+.container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.order {
+    /* position: absolute;
+    top: 10px; */
+    margin-top: -10px;
+    font-size: 25px;
+    font-weight: 600px;
+    color: white;
+}
+
+.form-control {
+    width: 400px;
+}
+
+.credit {
+    /* width: 400px; */
+    right: 50px;
+}
+
+.submit_order {
+    /* padding: 70px;
+    padding-right: 100px; */
+    padding-top: 70px;
+}
+
+.form-inline {
+    position: relative;
+    /* margin-bottom: 30px; */
+    padding-bottom: 50px;
+}
+
+.alert {
+    margin-bottom: 30px;
+}
+
+label {
+    position: absolute;
+    left: 10px;
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+input {
+    position: absolute;
+    right: 10px;
+}
+
+.shiping {
+    margin-top: 25px;
+    border-bottom: 1px solid black;
+    /* margin-bottom: 30px; */
+}
+
+.payments {
+    margin-bottom: 60px;
+    border-bottom: 1px solid black;
+    color: brown;
+}
+
+.order_btn {
+    margin-top: 30px;
+}
+
+.modal_body {
+    text-align: center;
+}
+
+.card_title {
+    margin-bottom: .75rem;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    font-weight: 700;
+    color: brown;
+}
+
+.modal_footer {
+    display: unset;
+    text-align: center;
+}
+
+.Recipt {
+    color: #007bff;
+    margin-right: 10px;
+}

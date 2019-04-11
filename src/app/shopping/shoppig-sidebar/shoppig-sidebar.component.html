@@ -1,0 +1,73 @@
+<div class=" frame left_box">
+    <div class="card-body bg-light stripe upper_foter">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <H1 class="my_cart">My Cart:</H1>
+            </div>
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-link close_eye" (click)="Hide_SideBar()"><i class="far fa-eye-slash"></i></button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container scroll list">
+        <div *ngIf="this.service.Product_in_Cart.length==0" class="no_products">
+            <h3>
+                Your Cart Is Empty
+            </h3>
+            <br>
+            <h3><i class="far fa-frown-open"></i></h3>
+        </div>
+        <div *ngIf="this.service.Product_in_Cart.length>0">
+            <div class="item" *ngFor="let product of service.Product_in_Cart; let i=index">
+                <div class="detail pic">
+                    <img src="../../../assets/pictures/{{product['image']}}" style="width: 100px; height: 100px;">
+                </div>
+                <div class="detail name_price">
+                    <div class="name">{{product['product_name']}}</div>
+                    <div class="price">{{product['total_price'] | currency:'₪'}}</div>
+                </div>
+                <div class="detail quantity">
+                    <div class="Quantity">
+                        <table>
+                            <tr>
+                                <td>
+                                    <button class="step_buttons" type="button" mat-raised-button (click)="counter('decrement',i)" [disabled]="count < 2">-</button>
+                                </td>
+                                <td class="center-input">
+                                    <input matInput name="counter" class="Quantity_input" type="text" size="2" step="1" min='1' max='20' [(ngModel)]="service.Product_in_Cart[i]['quantity']" readonly required>
+                                </td>
+                                <td class="step_buttons">
+                                    <button class="step_buttons" type="button" mat-raised-button (click)="counter('increment',i)" [disabled]="count >19">+</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-sm btn-outline-primary update" (click)="UpdateQuantity(service.Product_in_Cart[i]['quantity'],product['id'],product['product_id'],product['cart_id'])">Update</button>
+                </div>
+                <div class="detail del">
+                    <button type="button" class="btn btn-sm btn-outline-danger" (click)="DeleteProduct_In_Cart(product['id'],product['cart_id'])"><i class="fas fa-trash-alt"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="bottom_footer">
+            <div class="row total_footer">
+                <div class="col-lg-8 total">CART TOTAL PRICE:
+                    <span *ngIf="this.service.Product_in_Cart.length==0">₪ 0</span>
+                    <span *ngIf="this.service.Product_in_Cart.length>0">{{service.Total_Cart_Price | currency:'₪'}}</span>
+                </div>
+                <div class="col-lg-4 del_all" *ngIf="this.service.Product_in_Cart.length>0">
+                    <button type="button" class="btn btn-sm btn-outline-danger" (click)="DeleteAllItems(Cart_Id)">Delete All Items</button>
+                </div>
+            </div>
+            <div *ngIf="service.Total_Cart_Price>0 && this.service.Product_in_Cart.length>0" class="col-lg-12 to_order">
+                <button type="button" class="btn btn-md btn-success order_btn" (click)="Order()">Order</button>
+            </div>
+        </div>
+    </div>
+</div>

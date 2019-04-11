@@ -1,0 +1,78 @@
+<div class="container">
+    <div [hidden]="service.submitted">
+        <h2>Log In</h2>
+        <br>
+        <form #LogInForm="ngForm">
+            <div class="form-group">
+                <label for="userName">User Name:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="userName" required #name='ngModel' name="userName" class="form-control" id="userName" [(ngModel)]="Logobj.userid" placeholder="Enter User Name">
+                </div>
+            </div>
+            <div [hidden]="userid_errorMasge==0 || name.valid" class="alert alert-danger">
+                <strong>Name is required</strong>
+            </div>
+            <div class="form-group">
+                <label for="pass">Password:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+                    </div>
+                    <input type="pass" required #pass='ngModel' name="pass" class="form-control" id="pass" [(ngModel)]="Logobj.pass" placeholder="Enter Password">
+                </div>
+            </div>
+            <div [hidden]="pass_errorMasge==0 || errorMasge==1 || pass.valid" class="alert alert-danger">
+                <strong>Password is required</strong>
+            </div>
+            <div [hidden]="this.service.ShowStartButton!=2" class="alert alert-danger">
+                <strong>password not mach</strong>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <button type="submit" class="btn btn-primary btn-block" (click)="login()">Log In</button>
+                </div>
+                <div class="col-6">
+                    <button type="submit" class="btn btn-default btn-block" (click)="signup(); LogInForm.reset()">Sign-Up</button>
+                </div>
+            </div>
+        </form>
+        <br>
+    </div>
+
+
+    <div *ngIf="this.service.ShowStartButton==1">
+        <div class="intro_massage">
+            <h3>
+                Welcome Back To Our Store
+            </h3>
+            <h3 class="user_name">{{this.service.LoginObj[0]['first_name']}} {{this.service.LoginObj[0]['last_name']}}.</h3>
+            <br>
+
+            <h3><i class="far fa-smile"></i></h3>
+        </div>
+        <br>
+        <button *ngIf="this.service.CartExist==0 || this.service.FirstPurchase==true" class="btn btn-success btn-block" (click)="shopping()">Start Shopping</button>
+        <button *ngIf="this.service.CartExist==1" class="btn btn-warning btn-block" (click)="shopping()">Resume Shopping</button>
+    </div>
+
+    <div *ngIf="this.service.ShowStartButton==3" class="new_customer">
+        <p>Please Sign-Up First, To Start Your First Purchase</p>
+    </div>
+
+    <div *ngIf="this.service_reg.submit==true">
+        <div class="intro_massage">
+            <h3>
+                Welcome To Our Store <span class="user_name">{{this.service_reg.newCustomer[0]['first_name']}} {{this.service_reg.newCustomer[0]['last_name']}}</span>.
+            </h3>
+            <h3>You Can Start Your First Purchase</h3>
+            <br>
+            <h3><i class="far fa-smile"></i></h3>
+        </div>
+        <br>
+        <button class="btn btn-success btn-block" (click)="shopping()">Start Shopping</button>
+    </div>
+</div>

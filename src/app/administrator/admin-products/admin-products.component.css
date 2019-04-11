@@ -1,0 +1,7 @@
+.card-deck {
+    float: left;
+}
+
+.card-body {
+    padding: 0.2rem;
+}
