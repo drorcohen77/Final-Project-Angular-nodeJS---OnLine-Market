@@ -38,7 +38,7 @@ app.use(cors(corsOptions))
 
 app.use(bodyParser.json());
 
-// LOG-IN PAGE:
+// MAIN PAGE LOG-IN PAGE:
 
 app.get('/getProducts', async(req, res) => {
 
