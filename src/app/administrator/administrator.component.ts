@@ -16,10 +16,7 @@ export class AdministratorComponent implements OnInit {
 
     await this.main_service.CheckSession('CheckSession');
     console.log(this.main_service.Session);
-    // if(this.main_service.Session==false){
-    //   console.log(this.main_service.Session);
-    //     this.nav.navigate(['main']);
-    //   }
+    
     if(this.admin_service.ShowProducts.length==0){
       console.log(this.admin_service.ShowProducts);
         this.nav.navigate(['main']);
