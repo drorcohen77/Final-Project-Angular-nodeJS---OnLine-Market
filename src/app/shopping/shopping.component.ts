@@ -19,8 +19,8 @@ export class ShoppingComponent implements OnInit {
 
     if(this.admin_service.ShowProducts.length==0){
       console.log(this.admin_service.ShowProducts);
-        this.nav.navigate(['main']);
-      }
+      this.nav.navigate(['main']);
+    }
     this.main_service.ShoppingMain=1;
   }
 

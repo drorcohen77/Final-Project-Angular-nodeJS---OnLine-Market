@@ -85,6 +85,7 @@ export class LogInComponent implements OnInit {
     console.log("regestration comp.");
   }
 
+
   async shopping(){
     console.log(this.service.LoginObj);
     this.customer_id['id']=this.service.LoginObj[0]['customer_id'];
@@ -95,6 +96,7 @@ export class LogInComponent implements OnInit {
       this.shopping_service.Product_in_Cart=[];
       this.service.OpenCart=true;
     }
+
     this.nav.navigate(['shopping']);
   }
 
